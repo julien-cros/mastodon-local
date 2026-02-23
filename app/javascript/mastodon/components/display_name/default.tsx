@@ -28,7 +28,7 @@ export const DisplayNameDefault: FC<
       {...props}
     >
       {' '}
-      <span className='display-name__account'>
+      <span className='display-name__account' style={{}}>
         {username ?? <Skeleton width='7ch' />}
       </span>
     </DisplayNameWithoutDomain>

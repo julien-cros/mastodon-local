@@ -54,6 +54,7 @@ export interface AccountShape extends Required<
   hidden: boolean;
   moved: string | null;
   url: string;
+  is_verified: boolean | null;
 }
 
 export type Account = RecordOf<AccountShape>;
@@ -96,6 +97,7 @@ export const accountDefaultValues: AccountShape = {
   // This comes from `ApiMutedAccountJSON`, but we should eventually
   // store that in a different object.
   mute_expires_at: null,
+  is_verified: false,
 };
 
 const AccountFactory = ImmutableRecord<AccountShape>(accountDefaultValues);

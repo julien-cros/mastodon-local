@@ -34,6 +34,7 @@
 #  id_scheme                     :integer          default("numeric_ap_id")
 #  inbox_url                     :string           default(""), not null
 #  indexable                     :boolean          default(FALSE), not null
+#  is_verified                   :boolean          default(FALSE), not null
 #  last_webfingered_at           :datetime
 #  locked                        :boolean          default(FALSE), not null
 #  memorial                      :boolean          default(FALSE), not null
@@ -171,6 +172,7 @@ class Account < ApplicationRecord
   scope :with_domain, ->(value) { where arel_table[:domain].lower.eq(value&.to_s&.downcase) }
   scope :without_memorial, -> { where(memorial: false) }
   scope :duplicate_uris, -> { select(:uri, Arel.star.count).group(:uri).having(Arel.star.count.gt(1)) }
+  scope :verified, -> { where(is_verified: true) }
 
   after_update_commit :trigger_update_webhooks
 
