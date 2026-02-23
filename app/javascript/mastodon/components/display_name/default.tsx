@@ -1,5 +1,5 @@
-import { useMemo } from 'react';
 import type { ComponentPropsWithoutRef, FC } from 'react';
+import { useMemo } from 'react';
 
 import { Skeleton } from '../skeleton';
 
